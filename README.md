@@ -8,10 +8,6 @@
 
 [The ConvertAPI](https://convertapi.com) helps in converting various file formats. Creating PDF and Images from various sources like Word, Excel, Powerpoint, images, web pages or raw HTML codes. Merge, Encrypt, Split, Repair and Decrypt PDF files and many other file manipulations. You can integrate it into your application in just a few minutes and use it easily.
 
-## Requirements
-
-Node.js v6.0 and later.
-
 ## Installation
 
 ```sh
@@ -50,7 +46,8 @@ var convertapi = require('convertapi')('your-api-secret', {
       username: 'testuser',
       password: 'secret'
     }
-  }
+  },
+  keepAlive: true
 });
 ```
 
@@ -109,7 +106,7 @@ var resultPromise = convertapi.convert('pdf', { File: 'https://website/my_file' 
 #### Additional conversion parameters
 
 ConvertAPI accepts additional conversion parameters depending on selected formats. All conversion
-parameters and explanations can be found [here](https://www.convertapi.com).
+parameters and explanations can be found [here](https://www.convertapi.com/conversions).
 
 ```javascript
 var resultPromise = convertapi.convert(
@@ -124,11 +121,12 @@ var resultPromise = convertapi.convert(
 
 ### User information
 
-You can always check your remaining seconds amount programmatically by fetching [user information](https://www.convertapi.com/doc/user).
+You can always check your conversion counts by fetching [user information](https://www.convertapi.com/doc/user).
 
 ```javascript
 convertapi.getUser().then(function(info) {
-  console.log("Seconds left: " + info.SecondsLeft);
+  console.log("ConversionsTotal: " + info.ConversionsTotal);
+  console.log("ConversionsConsumed: " + info.ConversionsConsumed);
 });
 ```
 
@@ -142,6 +140,14 @@ convertapi
     console.debug(e.request);
     console.debug(e.response);
   });
+```
+
+### Alternative domain
+
+Set `base_uri` parameter to use other service domains. Dedicated to the region [domain list](https://www.convertapi.com/doc/servers-location).
+
+```js
+var convertapi = require('../lib')(process.env.CONVERT_API_SECRET, { baseUri: 'https://eu-v2.convertapi.com/' });
 ```
 
 ### More examples

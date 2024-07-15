@@ -1,6 +1,6 @@
 {
   "name": "convertapi",
-  "version": "1.11.2",
+  "version": "1.14.0",
   "description": "Official convertapi.com API client",
   "main": "./lib/index.js",
   "types": "./index.d.ts",
@@ -41,11 +41,11 @@
   },
   "homepage": "https://github.com/ConvertAPI/convertapi-node#readme",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^1.6.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -55,12 +55,12 @@
     "chai-fs": "^2.0.0",
     "cross-env": "^5.1.3",
     "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb": "~17.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "istanbul": "^1.0.0-alpha",
-    "mocha": "^5.0.0",
+    "mocha": "^10.2.0",
     "rimraf": "^2.6.2"
   }
 }

@@ -21,6 +21,14 @@ export const normalizeFilesParam = async (promise) => {
   return Promise.all(value);
 };
 
+export const normalizeBaseUri = (baseUri) => {
+  if (baseUri[baseUri.length - 1] !== '/') {
+    return `${baseUri}/`;
+  }
+
+  return baseUri;
+};
+
 export const buildFileParam = async (api, value) => {
   if (URI_REGEXP.test(value)) {
     return value;
@@ -100,4 +108,12 @@ export const getReadableStream = (source) => {
 export const encodeFileName = (fileName) => {
   const str = encodeURIComponent(fileName);
   return str.replace(/[!'()*]/g, c => `%${c.charCodeAt(0).toString(16)}`);
+};
+
+export const detectConverter = (params) => {
+  const converterKey = Object.keys(params).find(key => key.toLowerCase() === 'converter');
+
+  if (!converterKey) return undefined;
+
+  return params[converterKey];
 };
