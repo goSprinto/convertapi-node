@@ -7,9 +7,6 @@ jobs:
       matrix:
         node-version:
           - 18
-          - 14
-          - 10
-          - 6
     name: Node ${{ matrix.node-version }} sample
     steps:
       - uses: actions/checkout@v3
