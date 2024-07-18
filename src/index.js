@@ -2,7 +2,7 @@ import path from 'path';
 import pkg from '../package.json';
 import Task from './task';
 import Client from './client';
-import { getReadableStream } from './utils';
+import { getReadableStream, normalizeBaseUri } from './utils';
 
 function ConvertAPI(secret, options = {}) {
   if (!(this instanceof ConvertAPI)) {
@@ -10,13 +10,14 @@ function ConvertAPI(secret, options = {}) {
   }
 
   this.secret = secret;
-  this.baseUri = options.baseUri || 'https://v2.convertapi.com';
+  this.baseUri = normalizeBaseUri(options.baseUri || 'https://v2.convertapi.com/');
   this.conversionTimeout = options.conversionTimeout;
   this.conversionTimeoutDelta = options.conversionTimeoutDelta || 10;
   this.uploadTimeout = options.uploadTimeout || 1800;
   this.downloadTimeout = options.downloadTimeout || 1800;
   this.userAgent = `ConvertAPI-Node/${pkg.version}`;
   this.proxy = options.proxy;
+  this.keepAlive = options.keepAlive !== undefined ? options.keepAlive : true;
 
   this.client = new Client(this);
 }
