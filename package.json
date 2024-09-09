@@ -40,9 +40,6 @@
     "url": "https://github.com/ConvertAPI/convertapi-node/issues"
   },
   "homepage": "https://github.com/ConvertAPI/convertapi-node#readme",
-  "dependencies": {
-    "axios": "^1.6.2"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.1.0",
@@ -62,5 +59,8 @@
     "istanbul": "^1.0.0-alpha",
     "mocha": "^10.2.0",
     "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
   }
 }
